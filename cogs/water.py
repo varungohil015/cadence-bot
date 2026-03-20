@@ -67,7 +67,7 @@ class Water(commands.Cog):
 
     async def cog_load(self):
         # Re-register reminder loops for users who had active reminders before restart
-        async with __import__("aiosqlite").connect("data/cadence.db") as db_conn:
+        async with __import__("aiosqlite").connect("cadence.db") as db_conn:
             async with db_conn.execute("SELECT user_id, interval FROM water_reminders WHERE active = 1") as cur:
                 rows = await cur.fetchall()
         for row in rows:

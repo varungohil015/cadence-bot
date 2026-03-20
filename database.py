@@ -1,7 +1,7 @@
 import aiosqlite
 import os
 
-DB_PATH = os.path.join(os.path.dirname(__file__), "data", "cadence.db")
+DB_PATH = os.path.join(os.path.dirname(__file__), "cadence.db")
 
 
 async def init_db():
