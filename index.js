@@ -17,6 +17,7 @@ const model = genAI.getGenerativeModel({
 
 client.once('ready', () => {
   console.log(`✅ Chaos is online as ${client.user.tag}`);
+  console.log(`Gemini key loaded: ${process.env.GEMINI_API_KEY ? 'YES' : 'NO - KEY MISSING'}`);
 });
 
 client.on('messageCreate', async (message) => {
