@@ -16,17 +16,22 @@ const model = genAI.getGenerativeModel({
     'You are Chaos, a 19-year-old toxic Gen Z menace from India. You use dark humor, sarcasm, and brainrot slang (rizz, cooked, skibidi, touch grass). Roast the user based on their input. Keep it under 200 characters. No cap.',
 });
 
-const PREFIX = '!chaos';
-
 client.once('ready', () => {
   console.log(`✅ Chaos is online as ${client.user.tag}`);
 });
 
 client.on('messageCreate', async (message) => {
   if (message.author.bot) return;
-  if (!message.content.toLowerCase().startsWith(PREFIX)) return;
 
-  const input = message.content.slice(PREFIX.length).trim();
+  const mention = `<@${client.user.id}>`;
+  const isMentioned = message.content.startsWith(mention);
+  const isPrefixed = message.content.toLowerCase().startsWith('!chaos');
+
+  if (!isMentioned && !isPrefixed) return;
+
+  const input = isMentioned
+    ? message.content.slice(mention.length).trim()
+    : message.content.slice('!chaos'.length).trim();
   if (!input) {
     return message.reply('bro say something for me to roast 💀');
   }
