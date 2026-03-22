@@ -40,7 +40,7 @@ client.on('messageCreate', async (message) => {
     await message.reply(roast);
   } catch (err) {
     console.error('Gemini error:', err);
-    await message.reply('bro i'm cooked rn, try again 💀');
+    await message.reply("bro i'm cooked rn, try again 💀");
   }
 });
 
